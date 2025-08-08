@@ -1,0 +1,5 @@
+class KafkaConstant:
+    MAX_CONCURRENT_TASKS = 20
+    RERUN_KAFKA_SLEEP = 5
+
+    PATTERN_FOR_SOURCE_FIELD = r"^WH-\d{4}$"

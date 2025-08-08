@@ -1,0 +1,20 @@
+FROM python:3.11
+
+RUN apt-get update 
+
+RUN curl -v -fLsS https://install.python-poetry.org | python3 -
+
+ENV PATH="/root/.local/bin:$PATH"
+ENV POETRY_VIRTUALENVS_CREATE=false
+ENV PIP_DEFAULT_TIMEOUT=120
+
+COPY pyproject.toml ./
+
+RUN poetry install --no-root
+
+COPY . .
+
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
+EXPOSE 8000
