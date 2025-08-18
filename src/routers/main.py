@@ -19,10 +19,6 @@ async def get_movement(movement_id: UUID) -> SGetMovementByIdResult:
     """
     Возвращает информацию о перемещении по его ID, включая отправителя, получателя, время, прошедшее между отправкой и приемкой, и разницу в количестве товара.
     """
-    import asyncio
-
-    # тест кэш
-    await asyncio.sleep(5)
     return await MovementService.get_movements_by_id(movement_id)
 
 
@@ -32,8 +28,4 @@ async def get_remains_product_warehouse(warehouse_id: UUID, product_id: UUID) ->
     """
     Возвращает информацию текущем запасе товара в конкретном складе.
     """
-    import asyncio
-
-    # тест кэш
-    await asyncio.sleep(5)
     return await WarehouseService.get_product_warehouse_by_id(warehouse_id, product_id)
